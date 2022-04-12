@@ -18,7 +18,6 @@ export const Title = styled.h3`
   font-size: 28px;
   margin: 0 0 10px 0;
   line-height: 1.3;
-  font-family: "Work Sans", sans-serif;
 `;
 
 export const Author = styled.h4`
