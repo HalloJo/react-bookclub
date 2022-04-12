@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import BooksContainer from './components/BooksContainer';
+import Header from './components/Header';
 import { GlobalStyle } from './components/styles';
 
 const App = () => {
   const [books, setBooks] = useState([])
-  
-  console.log('this message loads everytime time the component renders!')
 
   useEffect(()=> {
     const fetchData = async () => {
@@ -25,6 +24,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <Header/>
       <BooksContainer books={books}/>
     </>
   )
