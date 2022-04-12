@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-
-
+import BooksContainer from './components/BooksContainer';
 
 const App = () => {
   const [books, setBooks] = useState([])
@@ -11,7 +10,7 @@ const App = () => {
   useEffect(()=> {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://book-club-jason.herokuapp.com/books')
+        const response = await fetch('https://book-club-json.herokuapp.com/books')
         const books = await response.json()
         setBooks(books)
       } catch(errors) {
@@ -22,10 +21,10 @@ const App = () => {
     fetchData()
   }, [])
 
-  console.log(`the books array in our state:`, books)
-
   return (
-    <div>Hello bookclub!</div>
+    <>
+      <BooksContainer books={books}/>
+    </>
   )
 }
 
