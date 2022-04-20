@@ -6,26 +6,29 @@ import { GlobalStyle } from './components/styles';
 
 const App = () => {
   const [books, setBooks] = useState([])
+  const [selectedBook, setSelectedBook] = useState(null)
 
   useEffect(()=> {
     const fetchData = async () => {
-      try {
         const response = await fetch('https://book-club-json.herokuapp.com/books')
         const books = await response.json()
         setBooks(books)
-      } catch(errors) {
-        console.log(errors)
-      }
     }
 
     fetchData()
   }, [])
 
+  const pickBook = (book) => {
+    setSelectedBook(book)
+  }
+
+  console.log(selectedBook)
+
   return (
     <>
       <GlobalStyle />
       <Header/>
-      <BooksContainer books={books}/>
+      <BooksContainer books={books} pickBook={pickBook} />
     </>
   )
 }
