@@ -13,7 +13,6 @@ import { Panel, P, Em, Close, CloseWrapper, BG } from './DetailPanel.styles';
          prevBook.current = book
      }, [book, prevBook])
 
-     console.log(state)
      return (
         <>
         <BG onClick={closePanel} $state={state} />
