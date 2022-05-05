@@ -6,6 +6,7 @@ import Book from '../Book';
 const BooksContainer = ({books, pickBook, isPanelOpen, title}) => {
 
     const [scroll, setScroll] = useState(0)
+    const previousPanelState = useRef(false)
 
     useEffect(()=> {
         const handleScroll = debounce(()=> {
@@ -21,9 +22,16 @@ const BooksContainer = ({books, pickBook, isPanelOpen, title}) => {
         }
 
     }, [isPanelOpen])
+
+    useEffect(()=> {
+        if(previousPanelState.current && !isPanelOpen){
+            window.scroll(0, scroll)
+        }
+        previousPanelState.current = isPanelOpen
+    }, [isPanelOpen, previousPanelState, scroll])
             
     return (
-    <Container $isPanelOpen={isPanelOpen}>
+    <Container $isPanelOpen={isPanelOpen} $top={scroll}>
         <H2>{title}</H2>
         <Booklist>
             {books.map((book)=> (
