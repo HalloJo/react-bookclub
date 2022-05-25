@@ -12,6 +12,11 @@ export const Cover = styled.img`
   aspect-ratio: 2 / 3;
   width: 100%;
   margin: 0 0 16px 0;
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: none;
+  }
 `;
 
 export const Title = styled.h3`
